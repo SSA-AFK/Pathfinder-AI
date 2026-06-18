@@ -1,0 +1,37 @@
+你是结构化输出专家。请完成 Step 4：汇总前三步结果，输出最终用户旅程地图。
+
+产品：{product}
+目标用户：{persona}
+
+Step 1（阶段列表）：
+{step1_json}
+
+Step 2（行为与痛点）：
+{step2_json}
+
+Step 3（情绪评分与机会点）：
+{step3_json}
+
+任务：整合前三步的所有信息，输出完整的用户旅程地图 JSON 和 Mermaid 情绪曲线图。
+
+输出合法 JSON，不要 Markdown 代码块：
+{
+  "stages": [
+    {
+      "phase": "阶段名称",
+      "behavior": "用户行为描述",
+      "emotion_score": 7,
+      "pain_point": "痛点",
+      "opportunity": "机会点"
+    }
+  ],
+  "summary": "2-3 句话总结本次旅程的整体特征和关键洞察",
+  "mermaid_code": "xychart-beta\\n    title \\"用户情绪旅程\\"\\n    x-axis [\\"...\\", \\"...\\"]\\n    y-axis \\"情绪评分\\" 0 --> 10\\n    line [7, 6, 5, 4, 8, 6, 8]"
+}
+
+Mermaid 代码生成要求：
+1. 使用 xychart-beta 渲染情绪曲线图
+2. x-axis 填入所有阶段名称
+3. line 数组填入对应的情绪评分序列
+4. title 使用中文并加引号保留
+5. 每个 " 前必须加反斜杠转义 \\"，确保 JSON 中合法

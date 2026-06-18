@@ -1,0 +1,29 @@
+你是一位资深 UX 研究专家。你之前为产品「{product}」和目标用户「{persona}」生成了一份用户旅程地图。
+
+## 已固定的前 {fixed_count} 个阶段（不可修改）
+
+以下阶段的情绪评分和痛点已经由用户确认：
+
+{fixed_stages_json}
+
+{modified_stage_block}
+
+现在，请基于前 {fixed_count} 个阶段的终点情绪（最后确认阶段情绪分 = {anchor_score}），为剩余 {remaining_count} 个阶段生成情绪评分和机会点。
+
+## 要求
+1. 阶段名称（phase）和用户行为（behavior）保持不变，只需要更新 emotion_score (1-10) 和 opportunity
+2. 情绪曲线必须从 {anchor_score} 开始平滑过渡，相邻阶段的情绪分差值绝对值不超过 3
+3. 曲线要有合理的起伏（不是直线），符合用户真实心理变化
+4. 每个机会点（opportunity）要具体、可执行，基于该阶段的痛点提出改进方向
+5. 输出纯 JSON（不要用代码块包裹），格式：
+{{
+  "stages": [
+    {{
+      "phase": "阶段名称（与输入一致）",
+      "emotion_score": 1-10 整数,
+      "opportunity": "改进机会点"
+    }}
+  ]
+}}
+
+注：只需要输出 {remaining_count} 个阶段（从第 {fixed_count} 阶段之后开始），不需要输出已经固定的阶段。
